@@ -1,0 +1,14 @@
+# build files
+*.o
+*.out
+*.exe
+
+# build files (alternatively)
+build/
+bin/
+
+# documentation ouput
+docs/output/
+
+# secrets
+.env
