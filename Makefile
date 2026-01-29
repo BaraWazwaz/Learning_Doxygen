@@ -40,3 +40,10 @@ clean:
 
 run: all
 	@.\$(TARGET)
+
+# Documentation depends on all header and source files
+docs/output/index.html: $(SOURCES) include/*.hpp docs/DoxyFile
+	doxygen docs/DoxyFile
+
+# Shortcut command
+doc: docs/output/index.html
