@@ -1,14 +1,17 @@
-# build files
+### Build files
 *.o
 *.out
 *.exe
 
-# build files (alternatively)
-build/
-bin/
+### Build files (alternatively)
+# build/
+# bin/
 
-# documentation ouput
+### Documentation ouput
 docs/output/
 
-# secrets
+### Secrets
 .env
+
+### IDE configurations
+.vscode
