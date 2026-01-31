@@ -1,0 +1,24 @@
+var NAVTREEINDEX0 =
+{
+"annotated.html":[0,0],
+"classes.html":[0,1],
+"d4/d6a/template_8hpp.html":[1,0,0,1],
+"d4/d6a/template_8hpp.html#a52d620c9e9bc63753a0061bdbc2d6a93":[1,0,0,1,0],
+"d4/d6a/template_8hpp.html#a94d0f2a917145929fd543c4f4507755d":[1,0,0,1,1],
+"d4/d6a/template_8hpp_source.html":[1,0,0,1],
+"da/daf/header_8hpp.html":[1,0,0,0],
+"da/daf/header_8hpp_source.html":[1,0,0,0],
+"dd/da0/classnitron_1_1_base.html":[0,0,0,0],
+"dd/da0/classnitron_1_1_base.html#a14ae12a118319c20814269f481330e9b":[0,0,0,0,0],
+"dd/da0/classnitron_1_1_base.html#a289f57305c6f3861dd24a2e4cd4cfbec":[0,0,0,0,1],
+"dd/da0/classnitron_1_1_base.html#a3f62735024209d908e4cb8c2392a14f7":[0,0,0,0,2],
+"df/d71/classnitron_1_1_derived.html":[0,0,0,1],
+"dir_d44c64559bbebec7f509842c48db8b23.html":[1,0,0],
+"files.html":[1,0],
+"functions.html":[0,3,0],
+"functions_func.html":[0,3,1],
+"functions_vars.html":[0,3,2],
+"hierarchy.html":[0,2],
+"index.html":[],
+"pages.html":[]
+};
