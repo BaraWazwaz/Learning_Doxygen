@@ -1,9 +1,11 @@
-name: Build & Deploy Doxygen Docs (Windows)
+name: Build & Deploy Doxygen Docs (Branch-aware)
 
 on:
   push:
     branches:
       - windows
+      - develop
+      - experimental
   workflow_dispatch:
 
 permissions:
@@ -14,24 +16,22 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout source branch
         uses: actions/checkout@v4
 
       - name: Install Doxygen
-        run: |
-          choco install doxygen.install -y
+        run: choco install doxygen.install -y
         shell: powershell
 
       - name: Generate Documentation
-        run: |
-          doxygen docs\Doxyfile
+        run: doxygen docs\Doxyfile
         shell: powershell
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to branch-specific folder
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/output/html
+          destination_dir: ${{ github.ref_name }}
           publish_branch: gh-pages
-          user_name: github-actions[bot]
-          user_email: github-actions[bot]@users.noreply.github.com
+          keep_files: true
