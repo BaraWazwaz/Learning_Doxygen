@@ -5,16 +5,20 @@ TARGET   := bin/main.exe
 CXX      := g++
 CXXFLAGS := -Wall -Wextra -std=c++23 -Iinclude
 SRC_DIR  := src
+HDR_DIR  := include
 OBJ_DIR  := build
 BIN_DIR  := bin
 
 # --- File Discovery ---
 # Use forward slashes for discovery (G++ understands them fine)
 SOURCES  := $(wildcard $(SRC_DIR)/*.cpp)
+HEADERS  := $(wildcard $(HDR_DIR)/*.[ht]pp)
 OBJECTS  := $(SOURCES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
-# --- Build Rules ---
+# --- Utility Commands ---
+.PHONY: all clean run doc
 
+# --- Build Rules ---
 all: $(TARGET)
 
 # Link the executable
@@ -25,15 +29,9 @@ $(TARGET): $(OBJECTS) | $(BIN_DIR)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Windows-specific directory creation
 $(BIN_DIR) $(OBJ_DIR):
 	@if not exist "$@" mkdir "$@"
 
-# --- Utility Commands ---
-
-.PHONY: clean run
-
-# Windows 'del' needs backslashes to work properly
 clean:
 	@if exist $(OBJ_DIR) rmdir /s /q $(OBJ_DIR)
 	@if exist $(BIN_DIR) rmdir /s /q $(BIN_DIR)
@@ -41,9 +39,8 @@ clean:
 run: all
 	@.\$(TARGET)
 
-# Documentation depends on all header and source files
-docs/output/index.html: $(SOURCES) include/*.hpp docs/DoxyFile
-	doxygen docs/DoxyFile
-
-# Shortcut command
 doc: docs/output/index.html
+
+docs/output/index.html: $(SOURCES) $(HEADERS) docs/Doxyfile
+	doxygen docs/Doxyfile
+	@echo "Generating docs..."
