@@ -39,8 +39,15 @@ clean:
 run: all
 	@.\$(TARGET)
 
-doc: docs/output/index.html
-
-docs/output/index.html: $(SOURCES) $(HEADERS) docs/Doxyfile
+docs/output/index.html: $(SOURCES) include/*.hpp docs/Doxyfile
+	@echo "Configure the docs/Doxyfile to your preferences..."
+	@pause
 	doxygen docs/Doxyfile
-	@echo "Generating docs..."
+
+docs/Doxyfile: docs
+	@doxygen -g docs/Doxyfile
+
+docs:
+	@mkdir docs
+
+doc: docs/output/index.html
